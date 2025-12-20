@@ -1,14 +1,23 @@
 import React from 'react'
-import { getCategory } from '../api/category'
+import { getAllProduct, getCategory } from '../api/category'
 import { useQuery } from '@tanstack/react-query'
 
 const useCategory = () => {
    const { isPending, error, data  } = useQuery({
     queryKey: ["Category"],
-    queryFn:getCategory,
+    queryFn: getCategory,
       
   })
-  return {isPending ,error , data }
+  return { isPending ,error , data }
 }
 
-export default useCategory
+const useProduct = ()=>{
+   const { isPending, error, data  } = useQuery({
+    queryKey: ["products"],
+    queryFn: getAllProduct,
+      
+  })
+  return { isPending ,error , data }
+}
+
+export {useCategory , useProduct}

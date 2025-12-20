@@ -3,6 +3,7 @@ import logoMiddle from '../assets/images/logomiddle.png'
 import BannerOne from '../assets/images/bannerOne.png'
 import BannerTwo from '../assets/images/BannerTwo.png'
 import BannerThree from '../assets/images/BannerThree.png'
+import ProductVariant from '../assets/images/productvariant.png'
 
 const imagesProvider ={
      logo,
@@ -10,6 +11,6 @@ const imagesProvider ={
      BannerOne,
      BannerTwo,
      BannerThree,
-     
+     ProductVariant,
 }
 export {imagesProvider}

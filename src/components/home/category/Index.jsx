@@ -1,11 +1,13 @@
 import React from 'react'
 import Container from '../../commonComponent/Container'
-import useCategory from '../../../hooks/useCategory';
+import {useCategory} from '../../../hooks/useCategory';
 import CategoryItem from '../../commonComponent/CategoryItem';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {Navigation} from 'swiper/modules';
+
+
 const Category = () => {
   
   const { isPending, islooding, error, data } = useCategory();
@@ -41,10 +43,9 @@ const Category = () => {
         pagination={{
           clickable: true,
         }}
-      
        
      >
-      {/* {data?.data?.map((item ,index)=>(
+     {data?.data?.map((item ,index)=>(
 
        <div key={index}>
          <SwiperSlide> 
@@ -53,9 +54,7 @@ const Category = () => {
            <CategoryItem item={item}/>
         </SwiperSlide>
        </div>
-      ))} */}
-        
-        
+      ))} 
        
       </Swiper>                
        
