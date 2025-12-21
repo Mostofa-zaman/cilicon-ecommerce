@@ -17,7 +17,9 @@ const ProductVariant = () => {
                     <picture>
                         <img 
                         src={imagesProvider.ProductVariant} 
-                        alt={imagesProvider.ProductVariant} />
+                        alt={imagesProvider.ProductVariant} 
+                        className='h-[716px]'
+                        />
                     </picture>
                 </div>
                 <div className="">
@@ -35,8 +37,10 @@ const ProductVariant = () => {
                    <div className="flex flex-wrap justify-between gap-y-4 mt-6">
 
                     {productData?.data?.data?.products.slice(0,8)?.map(item=>(
-                  <Product productInfo = {item}/>
-                    ))}                 </div>
+                  <Product productInfo = {{item, isPending, error}}/>
+                    ))}                
+                    
+                     </div>
                  
                 </div>
             </div>

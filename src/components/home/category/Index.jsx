@@ -16,7 +16,7 @@ const Category = () => {
       <div className="">
         <Container>
           <div className="">
-            isjoding
+           loading..
           </div>
         </Container>
       </div>
