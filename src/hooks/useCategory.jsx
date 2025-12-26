@@ -1,5 +1,5 @@
 import React from 'react'
-import { getAllProduct, getCategory } from '../api/category'
+import { getAllProduct, getCategory, getProductbyCategory } from '../api/category'
 import { useQuery } from '@tanstack/react-query'
 
 const useCategory = () => {
@@ -19,5 +19,14 @@ const useProduct = ()=>{
   })
   return { isPending ,error , data }
 }
+ 
+const usegetproductbycategory = (categoryName) => {
+  const { isPending, error, data } = useQuery({
+    queryKey: ["categoryproduct", categoryName],
+    queryFn: () => getProductbyCategory(categoryName),
+    enabled: !!categoryName ,
+  });
 
-export {useCategory , useProduct}
+  return { isPending, error, data };
+};
+export {useCategory , useProduct,usegetproductbycategory }

@@ -1,12 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Container from '../../commonComponent/Container'
 import { imagesProvider } from '../../../helpers/ImgProvider'
-import {useCategory, useProduct} from '../../../hooks/useCategory'
+import {useCategory, usegetproductbycategory, useProduct} from '../../../hooks/useCategory'
 import Product from '../../commonComponent/Product'
 
 const ProductVariant = () => {
- const { isPending, error, data  } = useCategory();
- const productData = useProduct();
+ const {  data  } = useCategory();
+ const {isPending: isproductLoading ,error:producterror, data: productData  } = useProduct();
+ const [selectedCategory, setSelectedCategory] = useState("");
+
+const {isPending: iscategoryLoading ,error:categoryerror, data: categoryData  } = usegetproductbycategory(selectedCategory)
+ 
+
+
+//  onclick menu 
+const handleCategoryMenu = (item) => {
+   setSelectedCategory(item)
+}
+// console.log('categoryData',categoryData?.data?.products)
 
   return (
     
@@ -26,20 +37,28 @@ const ProductVariant = () => {
                   {/* head part */}
                   <div className=" cursor-pointer body_sm_600 flex  items-center justify-between">
                     <h2>Featured Products</h2>
-                    <div className="flex gap-x-4 items-center cursor-pointer body_sm_500 ">
-                      <h2>All Product</h2>
-                      {data?.data?.slice(0,5).map((item)=>(
-                          <h3>{item}</h3>
+                    <div className="flex gap-x-4 items-center  ">
+                      <h2 className='cursor-pointer body_sm_600'>All Product</h2>
+                      {data?.data?.slice(0,8).map((item)=>(
+                          <h3 className='cursor-pointer body_sm_600' onClick={()=> handleCategoryMenu(item)}>{item}</h3>
                       ))}
                     </div>
                   </div>
                   {/* tail part */}
                    <div className="flex flex-wrap justify-between gap-y-4 mt-6">
-
-                    {productData?.data?.data?.products.slice(0,8)?.map(item=>(
-                  <Product productInfo = {{item, isPending, error}}/>
-                    ))}                
-                    
+                    {selectedCategory? (
+                  
+                    <Product 
+                    isloading={iscategoryLoading}
+                    isError={categoryerror}
+                    productInfo ={categoryData}/>
+                    ):(
+                  <Product
+                   isloading={isproductLoading}
+                    isError={producterror}
+                    productInfo ={productData}
+                  />
+                    )}
                      </div>
                  
                 </div>
