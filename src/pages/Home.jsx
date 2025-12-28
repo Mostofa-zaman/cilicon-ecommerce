@@ -7,6 +7,8 @@ import Banner from '../components/home/banner/Index'
 import Features from '../components/home/features/Index'
 import Category from '../components/home/category/Index'
 import ProductVariant from '../components/home/ProductVariant/Index'
+import Display from '../components/home/display/Index'
+import BestProduct from '../components/home/BestProduct/Index'
 
 
 const Home = () => {
@@ -21,6 +23,8 @@ const Home = () => {
     <Features/>
     <Category/>
     <ProductVariant/>
+    <Display/>
+    <BestProduct/>
     
     </>
   )

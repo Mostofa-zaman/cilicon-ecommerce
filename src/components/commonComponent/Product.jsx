@@ -8,8 +8,8 @@ const Product = ({ productInfo, isloading,isError }) => {
   if (isloading) {
     return (
       <Container>
-        <div className="mt-10">
-       <div className="flex flex-wrap justify-between gap-y-4 items-center">
+        <div className="">
+       <div className="flex flex-wrap justify-between  items-center">
         {[...new Array(8)].map((_,index)=>(
           
           <div key={index}>
@@ -51,13 +51,13 @@ const Product = ({ productInfo, isloading,isError }) => {
   }
 
   return (
-  <div className="flex flex-wrap gap-4">
-  {productInfo.data.products.slice(0, 8).map((product) => (
+  <div className="flex flex-wrap gap-4 mt-10 ">
+  {productInfo.data.products.slice(0,8).map((product) => (
     <div
       key={product.id}
-      className="mt-10 w-[calc(25%-1rem)]"
+      className="  w-[calc(25%-1rem)] hover:shadow-lg hover: rounded-2xl transition-shadow duration-300 bg- "
     >
-      <div className="p-5 border border-gray_50 rounded">
+      <div className="p-5 border border-gray_50 rounded-2xl">
         <div className="flex flex-col items-start justify-start gap-y-3">
           <span className="py-1.5 px-2.5 bg-danger_500 text-white text-sm">
             HOT
@@ -66,7 +66,7 @@ const Product = ({ productInfo, isloading,isError }) => {
           <img
             src={product.images?.[0]}
             alt={product.title}
-            className="w-[202px] h-[172px] object-cover"
+            className="w-[202px] h-[172px] object-cover bg-gray-100 rounded"
           />
 
           <div className="flex items-center gap-x-1 mt-2">

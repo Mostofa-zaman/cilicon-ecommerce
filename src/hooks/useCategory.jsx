@@ -1,5 +1,5 @@
 import React from 'react'
-import { getAllProduct, getCategory, getProductbyCategory } from '../api/category'
+import { getAllProduct, getCategory, getProductbyCategory, getProductbylimit } from '../api/category'
 import { useQuery } from '@tanstack/react-query'
 
 const useCategory = () => {
@@ -29,4 +29,14 @@ const usegetproductbycategory = (categoryName) => {
 
   return { isPending, error, data };
 };
-export {useCategory , useProduct,usegetproductbycategory }
+// best product using limit & skip
+const usegetproductbylimit = (skip=0) => {
+  const { isPending, error, data,refetch } = useQuery({
+    queryKey: ["productsskiplimit", skip],
+    queryFn: () => getProductbylimit(categoryName),
+    enabled: !!skip  ,
+  });
+
+  return { isPending, error, data,refetch  };
+};
+export {useCategory , useProduct,usegetproductbycategory ,usegetproductbylimit}
