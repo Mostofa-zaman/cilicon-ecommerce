@@ -6,7 +6,7 @@ import BannerThree from '../assets/images/BannerThree.png'
 import ProductVariant from '../assets/images/productvariant.png'
 import displayone from '../assets/images/displayone.png'
 import displaytwo from '../assets/images/displaytwo.png'
-
+// hello
 const imagesProvider ={
      logo,
      logoMiddle,
